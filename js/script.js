@@ -35,26 +35,32 @@ createApp({
     };
   },
   methods: {
-    showNextImage: function() {
-        if (this.currentImg < this.slides.length - 1) {
-            this.currentImg++;
-        } else {
-            this.currentImg = 0;
-        }
+    showNextImage: function () {
+      if (this.currentImg < this.slides.length - 1) {
+        this.currentImg++;
+      } else {
+        this.currentImg = 0;
+      }
     },
-    showPreviousImage: function() {
-        if (this.currentImg > 0) {
-            this.currentImg--;
-        } else {
-            this.currentImg = this.slides.length - 1;
-        }
+    showPreviousImage: function () {
+      if (this.currentImg > 0) {
+        this.currentImg--;
+      } else {
+        this.currentImg = this.slides.length - 1;
+      }
     },
-    activateItem: function(clickedIndex) {
-        this.currentImg = clickedIndex;
-    }
+    activateItem: function (clickedIndex) {
+      this.currentImg = clickedIndex;
+    },
+    stopAutoplay: function () {
+      clearInterval(this.autoScroll);
+    },
+    startAutoplay: function () {
+      this.autoScroll = setInterval(this.showNextImage, 3000);
+    },
   },
   mounted() {
-    alert('We are ready to go');
-    this.autoScroll = setInterval(this.showNextImage, 3000);
-  }
+    alert("We are ready to go");
+    this.startAutoplay();
+  },
 }).mount("#app");
