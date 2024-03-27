@@ -47,6 +47,9 @@ createApp({
         } else {
             this.currentImg = this.slides.length - 1;
         }
+    },
+    activateItem: function(clickedIndex) {
+        this.currentImg = clickedIndex;
     }
   },
 }).mount("#app");
