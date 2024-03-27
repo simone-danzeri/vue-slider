@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       currentImg: 0,
+      autoScroll: null,
       slides: [
         {
           image: "img/01.webp",
@@ -52,4 +53,8 @@ createApp({
         this.currentImg = clickedIndex;
     }
   },
+  mounted() {
+    alert('We are ready to go');
+    this.autoScroll = setInterval(this.showNextImage, 3000);
+  }
 }).mount("#app");
